@@ -27,6 +27,7 @@ window.addEventListener("load", async () => {
       .then(data => {
         document.getElementById("main").innerHTML = data.body;
         document.querySelector("title").innerHTML = data.name;
+        eval(data.js || "console.log('No JS could run')")
       })
       .catch(err => console.log("Request Failed", err));
   } else {
