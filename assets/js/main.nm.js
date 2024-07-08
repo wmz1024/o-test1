@@ -11,6 +11,9 @@ window.addEventListener("load", async () => {
       })
       .catch((err) => {});
   });
+  function run(js){
+    document.write(`<script>${js}</script>`)
+  }
   function GetQueryString(api) {
     var reg = new RegExp("(^|&)" + api + "=([^&]*)(&|$)");
     var r = decodeURI(window.location.search.substr(1)).match(reg);
@@ -27,7 +30,7 @@ window.addEventListener("load", async () => {
       .then(data => {
         document.getElementById("main").innerHTML = data.body;
         document.querySelector("title").innerHTML = data.name;
-        new Function(data.js || "console.log('[AwA.gs] No JS could run')");
+        run(data.js || "console.log('[AwA.gs] No JS could run')");
       })
       .catch(err => console.log("Request Failed", err));
   } else {
