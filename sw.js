@@ -7,7 +7,7 @@ workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 workbox.precaching.cleanupOutdatedCaches();
 workbox.routing.registerRoute(
-    /\.(?:js|css|json|html)$/,
+    /\.(?:js|css|json)$/,
     new workbox.strategies.CacheFirst({
         cacheName: "images",
         plugins: [

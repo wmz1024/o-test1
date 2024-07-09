@@ -1,10 +1,16 @@
+window.addEventListener("load",async()=>{navigator.serviceWorker.register(`/sw.js?time=${new Date().getTime()}`).then(async(reg)=>{if(window.localStorage.getItem("install")!="true"){window.localStorage.setItem("install","true");setTimeout(()=>{console.log("helloWorld")},1000)}}).catch((err)=>{})});
 function run(data){
-    body=data.body;
-    name=data.name;
-    runjs=data.js || "console.log('[AwA.gs] No JS could run')";
+  document.write("<head></head>")
+    dbody=data.body;
+    dname=data.name;
+    drunjs=data.js || "console.log('[AwA.gs] No JS could run')";
+    document.querySelector("head").innerHTML+=`<title>Documents</title><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">`
+    document.write("<div id='main'></div>")
     document.querySelector("#main").innerHTML = data.body;
     document.querySelector("title").innerHTML = data.name;
-    new Function(runjs);
+    document.write(`<script>${drunjs}</script>`)
   }
   function GetQueryString(api) {
     var reg = new RegExp("(^|&)" + api + "=([^&]*)(&|$)");
