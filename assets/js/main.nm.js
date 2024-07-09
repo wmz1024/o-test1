@@ -1,6 +1,9 @@
 function run(data){
+    body=data.body;
+    name=data.name;
+    runjs=data.js;
     document.write(`<script>${data.js || "console.log('[AwA.gs] No JS could run')"}</script>`)
-    document.getElementById("main").innerHTML = data.body;
+    document.querySelector("#main").innerHTML = data.body;
     document.querySelector("title").innerHTML = data.name;
   }
   function GetQueryString(api) {
