@@ -1,5 +1,7 @@
-function run(js){
-    document.write(`<script>${js}</script>`)
+function run(data){
+    document.write(`<script>${data.js || "console.log('[AwA.gs] No JS could run')"}</script>`)
+    document.getElementById("main").innerHTML = data.body;
+    document.querySelector("title").innerHTML = data.name;
   }
   function GetQueryString(api) {
     var reg = new RegExp("(^|&)" + api + "=([^&]*)(&|$)");
@@ -15,9 +17,7 @@ function run(js){
     fetch(`/assets/json/${sname}.json`)
       .then(response => response.json())
       .then(data => {
-        document.getElementById("main").innerHTML = data.body;
-        document.querySelector("title").innerHTML = data.name;
-        run(data.js || "console.log('[AwA.gs] No JS could run')");
+        run(data);
       })
       .catch(err => console.log("Request Failed", err));
   } else {
