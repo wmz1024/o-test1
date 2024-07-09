@@ -1,17 +1,4 @@
-window.addEventListener("load", async () => {
-    navigator.serviceWorker
-      .register(`/sw.js?time=${new Date().getTime()}`)
-      .then(async (reg) => {
-        if (window.localStorage.getItem("install") != "true") {
-          window.localStorage.setItem("install", "true");
-          setTimeout(() => {
-            console.log("helloWorld");
-          }, 1000);
-        }
-      })
-      .catch((err) => {});
-  });
-  function run(js){
+function run(js){
     document.write(`<script>${js}</script>`)
   }
   function GetQueryString(api) {
