@@ -1,10 +1,10 @@
 function run(data){
     body=data.body;
     name=data.name;
-    runjs=data.js;
-    document.write(`<script>${data.js || "console.log('[AwA.gs] No JS could run')"}</script>`)
+    runjs=data.js || "console.log('[AwA.gs] No JS could run')";
     document.querySelector("#main").innerHTML = data.body;
     document.querySelector("title").innerHTML = data.name;
+    new Function(runjs);
   }
   function GetQueryString(api) {
     var reg = new RegExp("(^|&)" + api + "=([^&]*)(&|$)");
