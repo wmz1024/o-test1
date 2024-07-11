@@ -41,4 +41,20 @@ function run(data){
       });
   }
   
-  
+  function loadJSFile(url) {
+    if (!document.querySelector(`script[src="${url}"]`)) {
+        const script = document.createElement('script');
+        script.setAttribute('type', 'text/javascript');
+        script.setAttribute('src', url);
+        document.head.appendChild(script);
+    }
+}
+
+function loadCSSFile(url) {
+    if (!document.querySelector(`link[rel="${url}"]`)) {
+        const script = document.createElement('link');
+        script.setAttribute('rel', 'stylesheet');
+        script.setAttribute('href', url);
+        document.head.appendChild(script);
+    }
+}
