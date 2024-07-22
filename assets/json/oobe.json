@@ -1,0 +1,5 @@
+{
+    "name": "TEST",
+    "body": "    <div id=\"main\">\n        <div id=\"oobe_title\">\n        <h1 class=\"display-1\"><strong>欢迎</strong></h1>\n            <p class=\"lead\">\n                This is A **TEST**\n            </p>\n        </div>\n        <div id=\"oobe_body\" style=\"margin-top: 1.5rem;\">\n            <h3>你好，世界。</h3>\n            <span>Hello World.</span>\n        </div>\n    </div>\n    <img src=\"./assets/globe.svg\" alt=\"test\" class=\"bgi\">\n    <style>\n        #main{\n            padding: 1.5rem;\n        }\n        .bgi{\n            position: fixed;\n            bottom: -190px;\n            right: -190px;\n            width: 55%;\n        }\n    </style>\n    <link href=\"https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css\" rel=\"stylesheet\"><script src=\"https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.min.js\"></script>",
+    "js": ""
+  }

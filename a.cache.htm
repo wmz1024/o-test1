@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <div id="main">
+        <div id="oobe_title">
+        <h1 class="display-1"><strong>您已离线！</strong></h1>
+            <p class="lead">
+                You're OFFLINE!
+            </p>
+        </div>
+        <div id="oobe_body" style="margin-top: 1.5rem;">
+            <h3>像您的华立科技乌蒙DX服务器一样！</h3>
+            <span>Just like UR Fucking Maimai DX Server</span>
+        </div>
+    </div>
+    <img src="./assets/globe.svg" alt="test" class="bgi">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #main{
+            padding: 1.5rem;
+        }
+        .bgi{
+            position: fixed;
+            bottom: -25.5%;
+            right: -10.5%;
+            width: 55%;
+        }
+        @media only screen and (max-device-width: 768px) {
+    .bgi{
+        position: fixed;
+        bottom: -13.5% !important;
+        right: -15.5% !important;
+        width: 55%;
+    }
+}
+@media only screen and (max-device-width: 450px) {
+    .bgi{
+        position: fixed;
+        bottom: -13.5% !important;
+        right: -15.5% !important;
+        width: 65%;
+    }
+}
+    </style>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"><script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>
