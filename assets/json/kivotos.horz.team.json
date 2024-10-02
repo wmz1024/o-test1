@@ -1,5 +1,5 @@
 {
   "name": "kivotos.horz.team",
   "body": "Redirecting...",
-  "js": "location.href=`https://minecraft.kivotos.net.cn+${location.pathname}`"
+  "js": "location.href=`https://minecraft.kivotos.net.cn${location.pathname}`"
 }
