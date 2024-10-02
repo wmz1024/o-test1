@@ -1,0 +1,6 @@
+{
+    "name": "kivotos.horz.team",
+    "body": "Redirecting...",
+    "js": "location.href=`https://id.kivotos.net.cn${location.pathname}`"
+  }
+  
