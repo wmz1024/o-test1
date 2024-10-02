@@ -34,7 +34,7 @@ function run(data){
     fetch(`/assets/json/${location.host}.json`)
       .then(response => response.json())
       .then(data => {
-        location.href = `/?p=${location.host}`;
+        location.href = `${location.pathname}?p=${location.host}`;
       })
       .catch(err => {
         location.href = `/?p=index`;
