@@ -1,5 +1,7 @@
 const workboxVersion = '5.1.3';
-importScripts(`https://cdn.bootcdn.net/ajax/libs/workbox-sw/${workboxVersion}/workbox-sw.min.js`);
+importScripts(
+    'https://storage.googleapis.com/workbox-cdn/releases/6.1.1/workbox-sw.js'
+  );
 workbox.core.setCacheNameDetails({
     prefix: "PwdBymz-W"+"0722"
 });
