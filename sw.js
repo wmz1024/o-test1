@@ -23,7 +23,3 @@ workbox.routing.registerRoute(
         ]
     })
 );
-  
-  workbox.router.registerRoute('/*.html', args => {
-    return articleHandler.handle(args);
-  });
