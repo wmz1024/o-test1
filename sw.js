@@ -23,13 +23,13 @@ workbox.routing.registerRoute(
         ]
     })
 );
-var articleHandler = workboxSW.strategies.networkFirst({
+var articleHandler = workbox.strategies.networkFirst({
     cacheName: 'pages1',
     cacheExpiration: {
       maxEntries: 50
     }
   });
   
-  workboxSW.router.registerRoute('/*.html', args => {
+  workbox.router.registerRoute('/*.html', args => {
     return articleHandler.handle(args);
   });
