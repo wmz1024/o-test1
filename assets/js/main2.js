@@ -36,30 +36,54 @@ window.addEventListener("load", async () => {
     }
   
     // 4. 将 data.body 的内容插入到 mainDiv
-    //    这里先设置 innerHTML，然后手动执行其中的脚本
     mainDiv.innerHTML = data.body || "";
   
     // 5. 处理 data.body 中的外部脚本（script src）
-    const externalScripts = mainDiv.querySelectorAll("script[src]");
-    externalScripts.forEach((script) => {
-      const newScript = document.createElement("script");
-      newScript.src = script.src;
-      newScript.onload = () => {
-        console.log(`Script ${script.src} loaded successfully.`);
-      };
-      newScript.onerror = () => {
-        console.error(`Failed to load script ${script.src}`);
-      };
-      document.head.appendChild(newScript); // 将外部脚本插入到 head
-    });
+    const externalScripts = Array.from(mainDiv.querySelectorAll("script[src]"));
+    function loadExternalScriptsSequentially(scripts, index = 0) {
+      if (index < scripts.length) {
+        const script = scripts[index];
+        const newScript = document.createElement("script");
+        newScript.src = script.src;
+        newScript.onload = () => {
+          console.log(`Script ${script.src} loaded successfully.`);
+          loadExternalScriptsSequentially(scripts, index + 1);  // 加载下一个脚本
+        };
+        newScript.onerror = () => {
+          console.error(`Failed to load script ${script.src}`);
+          loadExternalScriptsSequentially(scripts, index + 1);  // 即使失败，继续加载下一个
+        };
+        document.head.appendChild(newScript); // 将外部脚本插入到 head
+      } else {
+        // 所有外部脚本加载完成后，执行内联脚本
+        executeInlineScripts(mainDiv);
+      }
+    }
+  
+    // 启动外部脚本加载
+    loadExternalScriptsSequentially(externalScripts);
   
     // 6. 处理 data.body 中的内联脚本（script 标签里的代码）
-    const inlineScripts = mainDiv.querySelectorAll("script:not([src])");
-    inlineScripts.forEach((inlineScript) => {
-      const newInlineScript = document.createElement("script");
-      newInlineScript.textContent = inlineScript.textContent;
-      document.body.appendChild(newInlineScript); // 将内联脚本插入到 body 执行
-    });
+    function executeInlineScripts(container) {
+      const inlineScripts = Array.from(container.querySelectorAll("script:not([src])"));
+      function executeScriptSequentially(scripts, index = 0) {
+        if (index < scripts.length) {
+          const script = scripts[index];
+          const newInlineScript = document.createElement("script");
+          newInlineScript.textContent = script.textContent;
+          newInlineScript.onload = () => {
+            console.log('Inline script executed');
+            executeScriptSequentially(scripts, index + 1);  // 执行下一个脚本
+          };
+          newInlineScript.onerror = () => {
+            console.error('Inline script execution failed');
+            executeScriptSequentially(scripts, index + 1);  // 即使失败，继续执行下一个
+          };
+          document.body.appendChild(newInlineScript); // 执行内联脚本
+        }
+      }
+      executeScriptSequentially(inlineScripts);  // 执行所有内联脚本
+    }
   
     // 7. 如果 data.js 存在，则再创建一个 script 去执行 data.js
     const drunjs = data.js || "console.log('[AwA.gs] No JS could run')";
