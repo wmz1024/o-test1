@@ -5,12 +5,11 @@ function run(data){
     dbody=data.body;
     dname=data.name;
     drunjs=data.js || "console.log('[AwA.gs] No JS could run')";
-    document.querySelector("head").innerHTML+=`<title>Documents</title><meta charset="UTF-8">
+    document.querySelector("head").innerHTML+=`<title>${data.name || "Documents"}</title><meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">`
     document.write("<div id='main'></div>")
     document.querySelector("#main").innerHTML = data.body;
-    document.querySelector("title").innerHTML = data.name;
     document.write(`<script>${drunjs}</script>`)
   }
   function GetQueryString(api) {
@@ -19,7 +18,7 @@ function run(data){
     if (r != null) return unescape(r[2]);
     return null;
   }
-  var sname = GetQueryString("p");
+  var sname = GetQueryString("id");
   if (sname != null) {
     var sname_ = decodeURIComponent(sname);
   }
@@ -34,10 +33,10 @@ function run(data){
     fetch(`/assets/json/${location.host}.json`)
       .then(response => response.json())
       .then(data => {
-        location.href = `${location.pathname}?p=${location.host}`;
+        location.href = `${location.pathname}?id=${location.host}`;
       })
       .catch(err => {
-        location.href = `/?p=index`;
+        location.href = `/?id=index`;
       });
   }
   
