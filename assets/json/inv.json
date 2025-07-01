@@ -1,5 +1,5 @@
 {
   "name": "Inverse City - NFC render Application",
-  "body": "Inverse City - NFC render Application",
+  "body": "Inverse City - NFC render Application<br>请等待<br>Please Wait.",
   "js": "\n        const urlParams = new URLSearchParams(window.location.search);\n        const key = urlParams.get('key');\n        const targetUrl = `https://inversecity.hachiware.cn/app.html?key=${key || ''}`;\n        \n        window.location.href = targetUrl;"
 }
